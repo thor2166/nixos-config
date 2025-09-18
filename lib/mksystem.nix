@@ -9,5 +9,9 @@ nixpkgs.lib.nixosSystem {
     inherit inputs;
   };
   modules = [
+    ../system/machine/${name}
+    ({
+          nix.settings.experimental-features = [ "nix-command" "flakes" ];
+})
   ];
 }

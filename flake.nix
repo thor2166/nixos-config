@@ -11,7 +11,7 @@
     
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, rofi-unicode-list, fenix, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
     let
       system = flake-utils.lib.system.x86_64-linux;
       machine = "thor";
