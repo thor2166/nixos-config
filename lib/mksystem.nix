@@ -12,8 +12,10 @@ nixpkgs.lib.nixosSystem {
     ../system/machine/${name}
 ({ pkgs, lib, config, ... }@deps: {
               nix.settings.experimental-features = [ "nix-command" "flakes" ];
+                      nixpkgs.config.allowUnfree = true;
          environment.systemPackages = [
           pkgs.gh
+          pkgs.vscode
       pkgs.git
       pkgs.discord
 ];     
