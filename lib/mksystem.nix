@@ -10,8 +10,13 @@ nixpkgs.lib.nixosSystem {
   };
   modules = [
     ../system/machine/${name}
-    ({
-          nix.settings.experimental-features = [ "nix-command" "flakes" ];
+({ pkgs, lib, config, ... }@deps: {
+              nix.settings.experimental-features = [ "nix-command" "flakes" ];
+         environment.systemPackages = [
+          pkgs.gh
+      pkgs.git
+      pkgs.discord
+];     
 })
   ];
 }
