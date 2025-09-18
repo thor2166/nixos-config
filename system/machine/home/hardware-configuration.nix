@@ -12,6 +12,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+boot.extraModprobeConfig = ''
+  options snd-hda-intel model=alc1220
+'';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e4282938-ba80-4f5f-b18c-be10a01e6e45";
