@@ -20,6 +20,7 @@ in nixpkgs.lib.nixosSystem {
         pkgs.pciutils
         pkgs.spotify
       ];
+      programs.zsh.enable = true;
       programs.firefox.enable = true;
         users.users.${machine} = {
           shell = pkgs.zsh;

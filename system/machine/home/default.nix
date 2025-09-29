@@ -97,11 +97,7 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = [ pkgs.proton-ge-bin ];
-  };
+  
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   hardware.nvidia.open = true;
