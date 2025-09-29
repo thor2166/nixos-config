@@ -21,6 +21,9 @@ in nixpkgs.lib.nixosSystem {
         pkgs.spotify
       ];
       programs.firefox.enable = true;
+        users.users.${machine} = {
+          shell = pkgs.zsh;
+        };
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
@@ -37,11 +40,19 @@ in nixpkgs.lib.nixosSystem {
               enable = true;
               enableZshIntegration = true;
             };
+                        programs.zsh = {
+              enable = true;
+              oh-my-zsh = {
+                enable = true;
+                theme = "agnoster";
+                plugins = [ "git" ];
+              };
+              initExtra  = ''
+              source <(${pkgs.fzf}/bin/fzf --zsh)
+              '';
+            };
           };
         };
     })
   ];
-  users.users.${machine} = {
-          shell = pkgs.zsh;
-        };
 }
