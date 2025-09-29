@@ -99,7 +99,7 @@
   # Install firefox.
   
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   hardware.nvidia.open = true;
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaSettings = true;
