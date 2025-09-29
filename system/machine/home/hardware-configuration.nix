@@ -12,9 +12,19 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-boot.extraModprobeConfig = ''
-  options snd-hda-intel model=alc1220
-'';
+ boot.extraModprobeConfig = ''
+    options snd slots=snd_hda_intel,snd_usb_audio
+
+    options snd_hda_intel index=0 model=alc1220
+
+    options snd_usb_audio index=1
+  '';
+    sound.extraConfig = ''
+    defaults.pcm.card 0
+    defaults.ctl.card 0
+  '';
+boot.kernelPackages = pkgs.linuxPackages_latest;
+boot.blacklistedKernelModules = [ "snd_hda_codec_hdmi" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e4282938-ba80-4f5f-b18c-be10a01e6e45";
